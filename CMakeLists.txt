@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.9)
 
 include("cmake/HunterGate.cmake")
 HunterGate(
-    URL "https://github.com/ruslo/hunter/archive/v0.19.96.tar.gz"
-    SHA1 "8316d0491ee03a918d2e0973aaf5878d9bcfe472"
+    URL "https://github.com/ruslo/hunter/archive/v0.23.44.tar.gz"
+    SHA1 "c4cfcc0cd39fdae8de08f6205b7f34cab4a7ba79"
 )
 
 project(ShapeRecognition)
@@ -15,8 +15,9 @@ hunter_add_package(Boost)
 find_package(Boost REQUIRED)
 
 hunter_add_package(Catch)
-find_package(Catch REQUIRED)
+find_package(Catch2 REQUIRED)
 
+set(CMAKE_CXX_STANDARD 14)
 
 
 add_library(ShapeLib src/shapes.cpp
@@ -46,7 +47,7 @@ add_executable(ShapeTests tests/main.cpp
                           tests/shapes.cpp
                           tests/matchers.h
                           tests/matchers.cpp)
-target_link_libraries(ShapeTests PRIVATE ShapeLib Catch::Catch)
+target_link_libraries(ShapeTests PRIVATE ShapeLib Catch2::Catch)
 target_include_directories(ShapeTests PRIVATE src)
 
 add_test(ShapeTests ShapeTests)

@@ -22,7 +22,7 @@ struct Unknown {
 };
 
 using Shape = boost::variant<Circle, Square, Unknown>;
-using RecognitionResult = outcome::result<Shape, Error>;
+using RecognitionResult = outcome::unchecked<Shape, Error>;
 
 constexpr size_t DefaultDataWidth = 15;
 constexpr size_t DefaultDataHeight = 15;

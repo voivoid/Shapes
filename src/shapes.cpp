@@ -46,7 +46,7 @@ boost::optional<Shapes::Shape> adaptRecognizer(const cv::Mat& mat)
     assert(recognize);
     auto result = recognize(mat);
     if (result) {
-        return *result;
+        return {{*result}};
     }
     return {};
 }
